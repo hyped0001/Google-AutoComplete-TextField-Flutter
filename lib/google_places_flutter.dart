@@ -251,10 +251,15 @@ class _GooglePlaceAutoCompleteTextFieldState
       url,
     );
 
+    print('Place Details from Place ID ${response.data}');
+
     PlaceDetails placeDetails = PlaceDetails.fromJson(response.data);
 
     prediction.lat = placeDetails.result!.geometry!.location!.lat.toString();
     prediction.lng = placeDetails.result!.geometry!.location!.lng.toString();
+
+    print(prediction.lat);
+    print(prediction.lng);
 
     widget.getPlaceDetailWithLatLng!(prediction);
   }
