@@ -70,77 +70,59 @@ class _MyHomePageState extends State<MyHomePage> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: GooglePlaceAutoCompleteTextField(
-textEditingController: controller,                            googleAPIKey:
-                                "AIzaSyADWe13-uOSOvHmu7Cza7VPychlYv6fB-A",
-                            countries: const ['us'],
-                            isLatLngRequired: true,
-                            inputDecoration: const InputDecoration(
-                              hintText: "Where would you like to run?",
-                              border: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                            ),
-                            textStyle: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            boxDecoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                color: Colors.black.withOpacity(.15),
-                              ),
-                              borderRadius: BorderRadius.circular(13),
-                            ),
-                            itemClick: (Prediction prediction) {
-                              print('item clicked ${prediction.placeId}');
-                              _locationController.text =
-                                  prediction.description ?? "";
-                              _locationController.selection =
-                                  TextSelection.fromPosition(TextPosition(
-                                offset: prediction.description?.length ?? 0,
-                              ));
-                              // load new clubs based on Prediction
-                              // mapController.animateCamera(
-                              //   CameraUpdate.newCameraPosition(
-                              //     CameraPosition(
-                              //       target: LatLng(
-                              //         double.parse(prediction.lat.toString()),
-                              //         double.parse(prediction.lng.toString()),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // );
-                            },
-                            seperatedBuilder: const Divider(),
-                            containerHorizontalPadding: 10,
-                            itemBuilder:
-                                (context, index, Prediction prediction) {
-                              return Container(
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  border: Border.all(
-                                    color: Colors.black.withOpacity(.15),
-                                  ),
-                                  borderRadius: BorderRadius.circular(13),
-                                ),
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.location_on),
-                                    const SizedBox(
-                                      width: 7,
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                        prediction.description ?? "",
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              );
-                            },
-                            isCrossBtnShown: true,
-                          ),
+        textEditingController: controller,
+        googleAPIKey: "AIzaSyADWe13-uOSOvHmu7Cza7VPychlYv6fB-A",
+        countries: const ['us'],
+        isLatLngRequired: true,
+        inputDecoration: const InputDecoration(
+          hintText: "Where would you like to run?",
+          border: InputBorder.none,
+          enabledBorder: InputBorder.none,
+        ),
+        textStyle: const TextStyle(
+          color: Colors.black,
+          fontSize: 16.0,
+          fontWeight: FontWeight.w500,
+        ),
+        boxDecoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: Colors.black.withOpacity(.15),
+          ),
+          borderRadius: BorderRadius.circular(13),
+        ),
+        itemClick: (Prediction prediction) {
+          print('item clicked ${prediction.placeId}');
+        },
+        seperatedBuilder: const Divider(),
+        containerHorizontalPadding: 10,
+        itemBuilder: (context, index, Prediction prediction) {
+          return Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(
+                color: Colors.black.withOpacity(.15),
+              ),
+              borderRadius: BorderRadius.circular(13),
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.location_on),
+                const SizedBox(
+                  width: 7,
+                ),
+                Expanded(
+                  child: Text(
+                    prediction.description ?? "",
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+        isCrossBtnShown: true,
+      ),
     );
   }
 }
