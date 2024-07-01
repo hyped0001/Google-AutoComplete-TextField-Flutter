@@ -207,7 +207,7 @@ class _GooglePlaceAutoCompleteTextFieldState
                     separatorBuilder: (context, pos) =>
                         widget.seperatedBuilder ?? SizedBox(),
                     itemBuilder: (BuildContext context, int index) {
-                      return InkWell(
+                      return GestureDetector(
                         onTap: () {
                           var selectedData = alPredictions[index];
                           if (index < alPredictions.length) {
