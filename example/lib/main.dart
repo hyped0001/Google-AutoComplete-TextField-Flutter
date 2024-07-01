@@ -71,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: GooglePlaceAutoCompleteTextField(
         textEditingController: controller,
+        focusNode: FocusNode(),
         googleAPIKey: "AIzaSyADWe13-uOSOvHmu7Cza7VPychlYv6fB-A",
         countries: const ['us'],
         isLatLngRequired: true,

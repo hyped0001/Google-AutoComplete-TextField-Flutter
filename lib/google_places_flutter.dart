@@ -22,6 +22,7 @@ class GooglePlaceAutoCompleteTextField extends StatefulWidget {
   int debounceTime = 600;
   List<String>? countries = [];
   TextEditingController textEditingController = TextEditingController();
+  FocusNode focusNode;
   ListItemBuilder? itemBuilder;
   Widget? seperatedBuilder;
   void clearData;
@@ -31,23 +32,25 @@ class GooglePlaceAutoCompleteTextField extends StatefulWidget {
   double? containerHorizontalPadding;
   double? containerVerticalPadding;
 
-  GooglePlaceAutoCompleteTextField(
-      {required this.textEditingController,
-      required this.googleAPIKey,
-      this.debounceTime: 600,
-      this.inputDecoration: const InputDecoration(),
-      this.itemClick,
-      this.isLatLngRequired = true,
-      this.textStyle: const TextStyle(),
-      this.countries,
-      this.getPlaceDetailWithLatLng,
-      this.itemBuilder,
-      this.boxDecoration,
-      this.isCrossBtnShown = true,
-      this.seperatedBuilder,
-      this.showError = true,
-      this.containerHorizontalPadding,
-      this.containerVerticalPadding});
+  GooglePlaceAutoCompleteTextField({
+    required this.textEditingController,
+    required this.focusNode,
+    required this.googleAPIKey,
+    this.debounceTime: 600,
+    this.inputDecoration: const InputDecoration(),
+    this.itemClick,
+    this.isLatLngRequired = true,
+    this.textStyle: const TextStyle(),
+    this.countries,
+    this.getPlaceDetailWithLatLng,
+    this.itemBuilder,
+    this.boxDecoration,
+    this.isCrossBtnShown = true,
+    this.seperatedBuilder,
+    this.showError = true,
+    this.containerHorizontalPadding,
+    this.containerVerticalPadding,
+  });
 
   @override
   _GooglePlaceAutoCompleteTextFieldState createState() =>
@@ -92,6 +95,7 @@ class _GooglePlaceAutoCompleteTextFieldState
                 decoration: widget.inputDecoration,
                 style: widget.textStyle,
                 controller: widget.textEditingController,
+                focusNode: widget.focusNode,
                 onChanged: (string) {
                   subject.add(string);
                   if (widget.isCrossBtnShown) {
