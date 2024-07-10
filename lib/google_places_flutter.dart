@@ -181,6 +181,20 @@ class _GooglePlaceAutoCompleteTextFieldState
         .distinct()
         .debounceTime(Duration(milliseconds: widget.debounceTime))
         .listen(textChanged);
+
+    widget.focusNode.addListener(focusListener);
+  }
+
+  @override
+  void dispose() {
+    widget.focusNode.removeListener(focusListener);
+    super.dispose();
+  }
+
+  void focusListener() {
+    if (!widget.focusNode.hasFocus) {
+      removeOverlay();
+    }
   }
 
   textChanged(String text) async {
